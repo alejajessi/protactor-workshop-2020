@@ -6,5 +6,5 @@ export const config: Config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   onPrepare: () => {
     browser.ignoreSynchronization = true;
-}
+  }
 };
