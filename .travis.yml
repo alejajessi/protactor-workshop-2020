@@ -1,6 +1,6 @@
-dist: trusty
+dist: xenial
 addons:
-  chrome: "beta"
+  chrome: "stable"
 language: node_js
 cache:
   directories:
