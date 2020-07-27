@@ -1,6 +1,6 @@
 dist: trusty
 addons:
-  chrome: "84.0.4147.89"
+  chrome: "beta"
 language: node_js
 cache:
   directories:
