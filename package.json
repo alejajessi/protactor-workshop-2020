@@ -4,8 +4,8 @@
   "description": "This is a Workshop about Protractor",
   "main": "index.js",
   "scripts": {
+    "build": "npm run lint && npm run clean && tsc",
     "clean": "rm -rf dist",
-    "build": "npm run lint && clean && tsc",
     "test": "npm run test:headless",
     "lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts",
     "test:local": "npm run build && protractor dist/protractor/local.config.js",
