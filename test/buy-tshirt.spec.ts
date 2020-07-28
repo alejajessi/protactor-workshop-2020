@@ -1,13 +1,13 @@
 import { browser } from 'protractor';
-import { MenuContentPage, ProductListPage, ProductAddedModal, SummaryStepPage, SignInStepPage,
+import { MenuContentPage, ProductListPage, ProductAddedModalPage, SummaryStepPage, SignInStepPage,
    AddressStepPage, ShippingStepPage, PaymentStepPage, BankPaymentPage,
    OrderSummaryPage} from '../src/page';
-import { values } from './information_test/values';
+import { buyTShirtData } from './information_test/values';
 
 describe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
   const productListPage: ProductListPage = new ProductListPage();
-  const productaddedModal: ProductAddedModal = new ProductAddedModal();
+  const productaddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
   const summaryStepPage: SummaryStepPage = new SummaryStepPage();
   const signInStepPage: SignInStepPage = new SignInStepPage();
   const addressStepPage: AddressStepPage = new AddressStepPage();
@@ -27,13 +27,13 @@ describe('Buy a t-shirt', () => {
     await(browser.sleep(3000));
     await productListPage.selectProductTShirt();
     await(browser.sleep(3000));
-    await productaddedModal.productAdd();
+    await productaddedModalPage.productAdd();
     await(browser.sleep(3000));
     await summaryStepPage.checkSignIn();
     await(browser.sleep(3000));
 
-    await signInStepPage.writeEmail(values.correo);
-    await signInStepPage.writePassword(values.pass);
+    await signInStepPage.writeEmail(buyTShirtData.email);
+    await signInStepPage.writePassword(buyTShirtData.password);
     await signInStepPage.continueToLogin();
     await(browser.sleep(3000));
 
@@ -50,6 +50,6 @@ describe('Buy a t-shirt', () => {
     await bankPaymentPage.checkOuttoFinish();
     await(browser.sleep(3000));
 
-    await orderSummaryPage.summaryOrder(values.finalMessage) ;
+    await expect(orderSummaryPage.summaryOrder()).toBe(buyTShirtData.expectedMessage);
   });
 });

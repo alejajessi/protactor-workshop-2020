@@ -7,7 +7,7 @@ export class OrderSummaryPage {
     this.finalBtt = $('#center_column > div > p > strong');
   }
 
-  public async summaryOrder(text: string): Promise<void> {
-    await expect(this.finalBtt.getText()).toBe(text);
+  public async summaryOrder(): Promise<string> {
+    return this.finalBtt.getText();
   }
 }

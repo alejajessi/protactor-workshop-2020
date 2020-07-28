@@ -1,6 +1,6 @@
 import { $, ElementFinder } from 'protractor';
 
-export class ProductAddedModal {
+export class ProductAddedModalPage {
   private tShirtAdd: ElementFinder;
 
   constructor () {
