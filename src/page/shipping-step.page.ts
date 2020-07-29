@@ -6,8 +6,12 @@ export class ShippingStepPage {
   private  methodPay : ElementFinder;
 
   constructor () {
+
+    // Original : methodPay = $('#form > p > button > span');
+    // In the second case, I look an identifier and I found a name
+    // Then it's more specific and understandable
     this.confirmBtt = $('#cgv');
-    this.methodPay = $('#form > p > button > span');
+    this.methodPay = $('[name="processCarrier"]');
   }
 
   public async confirmButton(): Promise<void> {

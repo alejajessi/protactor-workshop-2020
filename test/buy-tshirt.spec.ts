@@ -1,10 +1,10 @@
 import { browser } from 'protractor';
 import { MenuContentPage, ProductListPage, ProductAddedModalPage, SummaryStepPage, SignInStepPage,
-   AddressStepPage, ShippingStepPage, PaymentStepPage, BankPaymentPage,
-   OrderSummaryPage} from '../src/page';
+   AddressStepPage, ShippingStepPage, PaymentStepPage, BankPaymentPage, OrderSummaryPage} from '../src/page';
 import { buyTShirtData } from './information_test/values';
 
 describe('Buy a t-shirt', () => {
+
   const menuContentPage: MenuContentPage = new MenuContentPage();
   const productListPage: ProductListPage = new ProductListPage();
   const productaddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();

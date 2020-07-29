@@ -4,6 +4,8 @@ export class SummaryStepPage {
   private summaryStep: ElementFinder;
 
   constructor () {
+    // I think that it is a good locator.
+    // I don't have any improvement.
     this.summaryStep = $('.cart_navigation span');
   }
 
