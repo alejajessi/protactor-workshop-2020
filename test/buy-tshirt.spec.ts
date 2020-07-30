@@ -64,15 +64,10 @@ describe('Open page in navegator', () => {
 
           });
 
-          describe('expected correct final', () => {
+          it('order should be completed ', async () => {
+            const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
 
-            beforeAll(async () => {
-
-              const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
-
-              await expect(orderSummaryPage.summaryOrder()).toBe(buyTShirtData.expectedMessage);
-
-            });
+            await expect(orderSummaryPage.summaryOrder()).toBe(buyTShirtData.expectedMessage);
 
           });
 
