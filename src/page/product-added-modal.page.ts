@@ -6,6 +6,7 @@ export class ProductAddedModalPage {
   constructor () {
 
     this.tShirtAdd = $('a[title="Proceed to checkout"]');
+
   }
 
   public async productAdd(): Promise<void> {

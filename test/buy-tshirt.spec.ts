@@ -21,7 +21,7 @@ describe('Open page in navegator', () => {
       const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
       await menuContentPage.goToTShirtMenu();
-      await productListPage.selectProductTShirt();
+      await productListPage.selectProduct(buyTShirtData.productName);
       await productaddedModalPage.productAdd();
       await summaryStepPage.checkSignIn();
 
