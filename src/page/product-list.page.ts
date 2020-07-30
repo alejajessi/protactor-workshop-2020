@@ -24,8 +24,8 @@ export class ProductListPage {
   private findByProduct (productName:string): ElementFinder {
 
     return this.products.filter((elemento:ElementFinder) =>
-    elemento.$('.product-name').getText().then((texto:string) =>
-    texto.includes(productName))).first();
+                                elemento.$('.product-name').getText().then((texto:string) =>
+                                texto.includes(productName))).first();
   }
 
 }
