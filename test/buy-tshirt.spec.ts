@@ -3,38 +3,80 @@ import { MenuContentPage, ProductListPage, ProductAddedModalPage, SummaryStepPag
    AddressStepPage, ShippingStepPage, PaymentStepPage, BankPaymentPage, OrderSummaryPage} from '../src/page';
 import { buyTShirtData } from './information_test/values';
 
-describe('Buy a t-shirt', () => {
+describe('Open page in navegator', () => {
 
-  const menuContentPage: MenuContentPage = new MenuContentPage();
-  const productListPage: ProductListPage = new ProductListPage();
-  const productaddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
-  const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-  const signInStepPage: SignInStepPage = new SignInStepPage();
-  const addressStepPage: AddressStepPage = new AddressStepPage();
-  const shippingStepPage: ShippingStepPage = new ShippingStepPage();
-  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
-  const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
-  const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
+  beforeAll(async () => {
 
-  it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-    await menuContentPage.goToTShirtMenu();
-    await productListPage.selectProductTShirt();
-    await productaddedModalPage.productAdd();
-    await summaryStepPage.checkSignIn();
 
-    await signInStepPage.writeEmail(buyTShirtData.email);
-    await signInStepPage.writePassword(buyTShirtData.password);
-    await signInStepPage.continueToLogin();
-
-    await addressStepPage.checkToShipping();
-
-    await shippingStepPage.confirmButton();
-
-    await shippingStepPage.continueToPay();
-    await paymentStepPage.checkOutPayment();
-    await bankPaymentPage.checkOuttoFinish();
-
-    await expect(orderSummaryPage.summaryOrder()).toBe(buyTShirtData.expectedMessage);
   });
+
+  describe('select product, t-shirt', () => {
+
+    beforeAll(async () => {
+
+      const menuContentPage: MenuContentPage = new MenuContentPage();
+      const productListPage: ProductListPage = new ProductListPage();
+      const productaddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+      const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+
+      await menuContentPage.goToTShirtMenu();
+      await productListPage.selectProductTShirt();
+      await productaddedModalPage.productAdd();
+      await summaryStepPage.checkSignIn();
+
+    });
+
+    describe('login in page app', () => {
+
+      beforeAll(async () => {
+
+        const signInStepPage: SignInStepPage = new SignInStepPage();
+
+        await signInStepPage.writeEmail(buyTShirtData.email);
+        await signInStepPage.writePassword(buyTShirtData.password);
+        await signInStepPage.continueToLogin();
+
+      });
+
+      describe('default address', () => {
+
+        beforeAll(async () => {
+
+          const addressStepPage: AddressStepPage = new AddressStepPage();
+          const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+
+          await addressStepPage.checkToShipping();
+          await shippingStepPage.confirmButton();
+          await shippingStepPage.continueToPay();
+
+        });
+
+        describe('payment bank', () => {
+
+          beforeAll(async () => {
+
+            const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+            const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+
+            await paymentStepPage.checkOutPayment();
+            await bankPaymentPage.checkOuttoFinish();
+
+          });
+
+          it('order should be completed ', async () => {
+            const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
+
+            await expect(orderSummaryPage.summaryOrder()).toBe(buyTShirtData.expectedMessage);
+
+          });
+
+        });
+
+      });
+
+    });
+
+  });
+
 });
