@@ -7,10 +7,6 @@ export class SignInStepPage {
 
   constructor () {
 
-    // Original: validation = $('#SubmitLogin > span');
-    // I think that locators are good but I found that final locator
-    // validation could be without span, because SubmitLogin is an
-    // identifier.
     this.email = $('#email');
     this.passw = $('#passwd');
     this.validation = $('#SubmitLogin');
