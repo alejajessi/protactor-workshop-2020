@@ -6,9 +6,10 @@ export class SignInStepPage {
   private validation: ElementFinder;
 
   constructor () {
+
     this.email = $('#email');
     this.passw = $('#passwd');
-    this.validation = $('#SubmitLogin > span');
+    this.validation = $('#SubmitLogin');
   }
 
   public async writeEmail(correo: string): Promise<void> {

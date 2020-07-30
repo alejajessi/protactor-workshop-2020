@@ -4,6 +4,7 @@ export class SummaryStepPage {
   private summaryStep: ElementFinder;
 
   constructor () {
+
     this.summaryStep = $('.cart_navigation span');
   }
 

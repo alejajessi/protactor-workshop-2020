@@ -4,7 +4,8 @@ export class ProductListPage {
   private tShirtProduct: ElementFinder;
 
   constructor () {
-    this.tShirtProduct = $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default');
+
+    this.tShirtProduct = $('div[class="button-container"] > a[title="Add to cart"]');
   }
 
   public async selectProductTShirt(): Promise<void> {

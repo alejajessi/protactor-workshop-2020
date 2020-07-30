@@ -4,7 +4,8 @@ export class ProductAddedModalPage {
   private tShirtAdd: ElementFinder;
 
   constructor () {
-    this.tShirtAdd = $('[style*="display: block;"] .button-container > a');
+
+    this.tShirtAdd = $('a[title="Proceed to checkout"]');
   }
 
   public async productAdd(): Promise<void> {

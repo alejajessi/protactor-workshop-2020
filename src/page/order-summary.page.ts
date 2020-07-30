@@ -4,7 +4,8 @@ export class OrderSummaryPage {
   private finalBtt: ElementFinder;
 
   constructor () {
-    this.finalBtt = $('#center_column > div > p > strong');
+
+    this.finalBtt = $('.cheque-indent');
   }
 
   public async summaryOrder(): Promise<string> {

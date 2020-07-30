@@ -6,8 +6,9 @@ export class ShippingStepPage {
   private  methodPay : ElementFinder;
 
   constructor () {
+
     this.confirmBtt = $('#cgv');
-    this.methodPay = $('#form > p > button > span');
+    this.methodPay = $('[name="processCarrier"]');
   }
 
   public async confirmButton(): Promise<void> {
