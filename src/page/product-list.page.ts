@@ -5,14 +5,14 @@ export class ProductListPage {
   private addProduct: ElementFinder;
   private timeOut: number = 7000;
 
-  constructor () {
+  constructor() {
 
     this.products = $$('.product-container');
     this.addProduct = $('div[class="button-container"] > a[title="Add to cart"]');
 
   }
 
-  public async selectProduct(productName:string): Promise<void> {
+  public async selectProduct(productName: string): Promise<void> {
 
     await browser.wait(ExpectedConditions.visibilityOf(this.findByProduct(productName)),
                        this.timeOut);
@@ -21,11 +21,11 @@ export class ProductListPage {
 
   }
 
-  private findByProduct (productName:string): ElementFinder {
+  private findByProduct(productName: string): ElementFinder {
 
-    return this.products.filter((elemento:ElementFinder) =>
-                                elemento.$('.product-name').getText().then((texto:string) =>
-                                texto.includes(productName))).first();
+    return this.products.filter((elemento: ElementFinder) =>
+      elemento.$('.product-name').getText().then((texto: string) =>
+        texto.includes(productName))).first();
   }
 
 }
