@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { ElementFinder, by, element } from 'protractor';
 
 export class BankPaymentPage {
   private checkOutBtt: ElementFinder;
@@ -8,7 +8,7 @@ export class BankPaymentPage {
     // I decided : #cart_navigation span because "> button > span" is
     // unnecessary. In #cart_navigation code block only has one span,
     // so it is sufficient information.
-    this.checkOutBtt = $('#cart_navigation span');
+    this.checkOutBtt = element(by.partialButtonText('I confirm my order'));
   }
 
   public async checkOuttoFinish(): Promise<void> {
