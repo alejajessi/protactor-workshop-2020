@@ -19,7 +19,7 @@ describe('Open page in navegator', () => {
 
     it('press button', async () => {
       await personalInformationPage.presButton();
-      await expect(personalInformationPage.getTitle).toBe(formData.expectedMessage);
+      await expect(personalInformationPage.getTitle()).toBe(formData.expectedMessage);
     });
   });
 });

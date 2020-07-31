@@ -64,8 +64,7 @@ export class PersonalInformationPage {
 
   public async getTitle(): Promise<string> {
     await browser.wait(
-      ExpectedConditions.visibilityOf(this.titleText),
-      this.timeout);
+      ExpectedConditions.visibilityOf(this.titleText), this.timeout);
     return this.titleText.getText();
   }
 
