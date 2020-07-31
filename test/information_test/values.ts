@@ -20,6 +20,6 @@ export const formData = {
     'Switch Commands',
     'Wait Commands',
     'WebElement Commands'],
-  expectedMessage: 'Practice Automation Form'
+  expectedMessage: 'Selenium - Automation Practice Form'
 
 };

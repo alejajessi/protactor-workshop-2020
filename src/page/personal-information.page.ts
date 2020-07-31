@@ -11,12 +11,13 @@ export class PersonalInformationPage {
   private selectCommands: ElementFinder;
   private button : ElementFinder;
   private titleText : ElementFinder;
-  private timeout : number = 9000;
+  private timeout : number = 12000;
 
   constructor() {
     this.firstNameSpace = $('[name="firstname"]');
     this.lastNameSpace = $('[name="lastname"]');
     this.button = $('[name="submit"]');
+    this.titleText = $('div.mui-container-fluid.content > div > div.mui-col-md-6.tutorial-content > h1:nth-child(1)');
   }
 
   public async fillForm(firstName: string, lastName: string, sex: string, experience: number,
@@ -34,24 +35,24 @@ export class PersonalInformationPage {
     await this.checkExperienceSpace.click();
 
     profession.forEach(async (element) => {
-      this.professionSpace = $(`input[name="profession"][value=${element}]`);
+      this.professionSpace = $(`input[name="profession"][value="${element}"]`);
       await this.professionSpace.click();
     });
-
-    tools.forEach(async (element) => {
-      this.checkToolsSpace = $(`input[name="tool"][value=${element}]`);
-      await this.checkToolsSpace.click();
-    });
-
-    this.selectContinent = $('select[name="continents"]')
-      .element(by.cssContainingText('option', continent));
-    await this.selectContinent.click();
 
     commands.forEach(async (element) => {
       this.selectCommands = $('select[name="selenium_commands"]')
       .element(by.cssContainingText('option', element));
       await this.selectCommands.click();
     });
+
+    tools.forEach(async (element) => {
+      this.checkToolsSpace = $(`input[name="tool"][value="${element}"]`);
+      await this.checkToolsSpace.click();
+    });
+
+    this.selectContinent = $('select[name="continents"]')
+      .element(by.cssContainingText('option', continent));
+    await this.selectContinent.click();
 
   }
 
