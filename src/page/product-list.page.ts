@@ -1,4 +1,4 @@
-import { $, $$, ExpectedConditions, ElementFinder, ElementArrayFinder, browser } from 'protractor';
+import { $$, ExpectedConditions, ElementFinder, ElementArrayFinder, browser } from 'protractor';
 
 export class ProductListPage {
   private products: ElementArrayFinder;
