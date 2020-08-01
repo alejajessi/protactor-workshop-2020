@@ -4,7 +4,6 @@ export class BankPaymentPage {
   private checkOutBtt: ElementFinder;
 
   constructor () {
-
     this.checkOutBtt = element(by.partialButtonText('I confirm my order'));
   }
 
