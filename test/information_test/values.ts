@@ -6,20 +6,15 @@ export const buyTShirtData = {
   expectedMessage: 'Your order on My Store is complete.'
 };
 
-export const formData = {
-  firstName: 'Alejandro',
-  lastName: 'Perdomo',
-  sex: 'Male',
-  experience: 7,
-  profession: ['Automation Tester'],
-  tools: ['Selenium Webdriver'],
-  continent: 'South America',
-  commands: [
-    'Browser Commands',
-    'Navigation Commands',
-    'Switch Commands',
-    'Wait Commands',
-    'WebElement Commands'],
-  expectedMessage: 'Selenium - Automation Practice Form'
+export interface FormData  {
+  firstName: string;
+  lastName: string;
+  sex: string;
+  experience: number;
+  profession: string[];
+  tools: string[];
+  continent: string;
+  commands:  string[];
+  expectedMessage: string;
 
-};
+}

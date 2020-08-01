@@ -1,6 +1,6 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
-import { formData } from './information_test/values';
+import { FormData } from './information_test/values';
 
 describe('Open page in navegator', () => {
 
@@ -10,16 +10,30 @@ describe('Open page in navegator', () => {
 
   describe('Fill form information', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    const information: FormData = {
+      firstName: 'Alejandro',
+      lastName: 'Perdomo',
+      sex: 'Male',
+      experience: 7,
+      profession: ['Automation Tester'],
+      tools: ['Selenium Webdriver'],
+      continent: 'South America',
+      commands: [
+        'Browser Commands',
+        'Navigation Commands',
+        'Switch Commands',
+        'Wait Commands',
+        'WebElement Commands'],
+      expectedMessage: 'Selenium - Automation Practice Form'
+    };
     beforeAll(async () => {
 
-      await personalInformationPage.fillForm(formData.firstName, formData.lastName, formData.sex,
-                                             formData.experience, formData.profession,
-                                             formData.tools, formData.continent, formData.commands);
+      await personalInformationPage.fillForm(information);
     });
 
     it('press button', async () => {
       await personalInformationPage.presButton();
-      await expect(personalInformationPage.getTitle()).toBe(formData.expectedMessage);
+      await expect(personalInformationPage.getTitle()).toBe(information.expectedMessage);
     });
   });
 });

@@ -1,4 +1,5 @@
 import { $, ElementFinder, by, browser, ExpectedConditions } from 'protractor';
+import { FormData } from '../../test/information_test/values';
 
 export class PersonalInformationPage {
   private firstNameSpace: ElementFinder;
@@ -20,38 +21,36 @@ export class PersonalInformationPage {
     this.titleText = $('div.mui-container-fluid.content > div > div.mui-col-md-6.tutorial-content > h1:nth-child(1)');
   }
 
-  public async fillForm(firstName: string, lastName: string, sex: string, experience: number,
-                        profession: string[], tools: string[], continent: string,
-                        commands: string[]): Promise<void> {
+  public async fillForm(information : FormData): Promise<void> {
 
-    await this.firstNameSpace.sendKeys(firstName);
+    await this.firstNameSpace.sendKeys(information.firstName);
 
-    await this.lastNameSpace.sendKeys(lastName);
+    await this.lastNameSpace.sendKeys(information.lastName);
 
-    this.checkGenderSpace = $(`input[name="sex"][value=${sex}]`);
+    this.checkGenderSpace = $(`input[name="sex"][value=${information.sex}]`);
     await this.checkGenderSpace.click();
 
-    this.checkExperienceSpace = $(`input[name="exp"][value="${experience}"]`);
+    this.checkExperienceSpace = $(`input[name="exp"][value="${information.experience}"]`);
     await this.checkExperienceSpace.click();
 
-    profession.forEach(async (element) => {
+    information.profession.forEach(async (element) => {
       this.professionSpace = $(`input[name="profession"][value="${element}"]`);
       await this.professionSpace.click();
     });
 
-    commands.forEach(async (element) => {
+    information.commands.forEach(async (element) => {
       this.selectCommands = $('select[name="selenium_commands"]')
       .element(by.cssContainingText('option', element));
       await this.selectCommands.click();
     });
 
-    tools.forEach(async (element) => {
+    information.tools.forEach(async (element) => {
       this.checkToolsSpace = $(`input[name="tool"][value="${element}"]`);
       await this.checkToolsSpace.click();
     });
 
     this.selectContinent = $('select[name="continents"]')
-      .element(by.cssContainingText('option', continent));
+      .element(by.cssContainingText('option', information.continent));
     await this.selectContinent.click();
 
   }
