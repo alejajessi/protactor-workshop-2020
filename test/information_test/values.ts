@@ -18,3 +18,5 @@ export interface FormData  {
   expectedMessage: string;
 
 }
+
+export const valueHeight = { newValueHeight : 100 };
